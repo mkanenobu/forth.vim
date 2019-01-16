@@ -1,8 +1,7 @@
 " if other was loaded, don't load this file
-" if exists("b:did_indent")
-"   finish
-" endif
-" let b:did_indent = 1
+if exists("b:did_indent")
+  finish
+endif
 
 setlocal autoindent
 
@@ -23,11 +22,13 @@ function! GetForthIndent(lnum)
     return indent(plnum) + &l:shiftwidth
   endif
 
-  if cline =~ '\s;'
+  if cline =~ '\s*;'
     return 0
   endif
 
-  return plnum - 1
+  return indent(plnum)
 endf
+
+let b:did_indent = 1
 
 " vim:sw=2
