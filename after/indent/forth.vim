@@ -18,11 +18,11 @@ function! GetForthIndent(lnum)
   let pline = getline(plnum)
   let cline = getline(a:lnum)
 
-  if pline =~ '^:\s*'
+  if pline =~ '^:\s*' && pline =~ ';$'
     return indent(plnum) + &l:shiftwidth
   endif
 
-  if cline =~ '\s*;'
+  if cline =~ '\s*;' && cline !~ '\w'
     return 0
   endif
 
