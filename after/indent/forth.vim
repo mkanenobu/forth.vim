@@ -7,7 +7,7 @@
 setlocal autoindent
 
 setlocal indentexpr=GetForthIndent(v:lnum)
-setlocal indentkeys=!^F,o,O,0:,=;
+setlocal indentkeys=!^F,o,O,0:,;
 
 setlocal expandtab
 
@@ -23,9 +23,11 @@ function! GetForthIndent(lnum)
     return indent(plnum) + &l:shiftwidth
   endif
 
-  if cline =~ '^;$'
+  if cline =~ '\s;'
     return 0
   endif
+
+  return plnum
 endf
 
 " vim:sw=2
