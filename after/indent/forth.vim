@@ -27,7 +27,7 @@ function! GetForthIndent(lnum)
     return 0
   endif
 
-  return plnum
+  return plnum - 1
 endf
 
 " vim:sw=2
